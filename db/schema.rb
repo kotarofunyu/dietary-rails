@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_01_132928) do
+ActiveRecord::Schema.define(version: 2021_05_07_132731) do
+
+  create_table "diaries", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.float "weight"
+    t.float "waist"
+    t.text "comment"
+    t.date "date", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id", "date"], name: "index_diaries_on_user_id_and_date", unique: true
+    t.index ["user_id"], name: "index_diaries_on_user_id"
+  end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -21,4 +33,5 @@ ActiveRecord::Schema.define(version: 2021_05_01_132928) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "diaries", "users"
 end
