@@ -1,11 +1,11 @@
-= form_with(model: diary) do |form|
-  - if diary.errors.any?
+= form_with(model: @diary_form, url: diaries_path,local: true) do |form|
+  - if @diary_form.errors.any?
     #error_explanation
       h2
-        = pluralize(diary.errors.count, "error")
+        = pluralize(@diary_form.errors.count, "error")
         |  prohibited this diary from being saved:
       ul
-        - diary.errors.each do |error|
+        - @diary_form.errors.each do |error|
           li
             = error.full_message
   .date
