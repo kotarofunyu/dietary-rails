@@ -22,6 +22,8 @@
 #
 class Diary < ApplicationRecord
   belongs_to :user
+  has_many :diary_cards, dependent: :destroy
+  has_many :cards, through: :diary_cards
 
   validates :date, presence: true
 end

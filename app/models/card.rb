@@ -8,4 +8,6 @@
 #  updated_at :datetime         not null
 #
 class Card < ApplicationRecord
+  has_many :diary_cards
+  has_many :diaries, through: :diary_cards
 end
