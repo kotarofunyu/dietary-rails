@@ -18,12 +18,13 @@ class DiariesController < ApplicationController
 
   # GET /diaries/1/edit
   def edit
-    @diary_form = DiaryForm.new(@diary)
+    @diary_form = DiaryForm.new(diary: @diary)
   end
 
   # POST /diaries or /diaries.json
   def create
-    @diary = DiaryForm.new(params: diary_params)
+    # @diary = DiaryForm.new(params: diary_params)
+    @diary = DiaryForm.new(diary_params)
 
     if @diary.save
       redirect_to diaries_path
