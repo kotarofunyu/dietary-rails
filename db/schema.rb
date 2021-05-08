@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_07_132731) do
+ActiveRecord::Schema.define(version: 2021_05_08_040338) do
+
+  create_table "cards", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_cards_on_user_id"
+  end
 
   create_table "diaries", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.float "weight"
@@ -24,6 +32,15 @@ ActiveRecord::Schema.define(version: 2021_05_07_132731) do
     t.index ["user_id"], name: "index_diaries_on_user_id"
   end
 
+  create_table "diary_cards", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "diary_id", null: false
+    t.bigint "card_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["card_id"], name: "index_diary_cards_on_card_id"
+    t.index ["diary_id"], name: "index_diary_cards_on_diary_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -33,5 +50,8 @@ ActiveRecord::Schema.define(version: 2021_05_07_132731) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "cards", "users"
   add_foreign_key "diaries", "users"
+  add_foreign_key "diary_cards", "cards"
+  add_foreign_key "diary_cards", "diaries"
 end
