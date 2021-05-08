@@ -18,6 +18,6 @@
 #
 class Card < ApplicationRecord
   has_many :diary_cards, dependent: :destroy
-  has_many :diaries, through: :diary_cards
+  has_many :diaries, through: :diary_cards, dependent: :restrict_with_error
   belongs_to :user
 end
