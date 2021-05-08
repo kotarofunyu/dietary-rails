@@ -5,5 +5,7 @@
       ul
         - @card.errors.full_messages.each do |message|
           li = message
+  .name
+    = f.text_field(:name)
 
   .actions = f.submit
