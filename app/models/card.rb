@@ -19,4 +19,5 @@
 class Card < ApplicationRecord
   has_many :diary_cards, dependent: :destroy
   has_many :diaries, through: :diary_cards
+  belongs_to :user
 end
