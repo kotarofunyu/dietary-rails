@@ -64,6 +64,6 @@ class DiariesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def diary_params
-      params.fetch(:diary, {})
+      params.fetch(:diary, {}).permit(:date, :weight, :waist, :comment).merge(user: current_user)
     end
 end
