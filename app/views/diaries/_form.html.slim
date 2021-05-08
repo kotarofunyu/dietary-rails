@@ -1,0 +1,24 @@
+= form_with(model: diary) do |form|
+  - if diary.errors.any?
+    #error_explanation
+      h2
+        = pluralize(diary.errors.count, "error")
+        |  prohibited this diary from being saved:
+      ul
+        - diary.errors.each do |error|
+          li
+            = error.full_message
+  .date
+    = form.label :date
+    = form.date_field(:date)
+  .weight
+    = form.label :weight
+    = form.number_field(:weight, step: 0.1)
+  .waist
+    = form.label :waist
+    = form.number_field(:waist, step: 0.1)
+  .comment
+    = form.label :comment
+    = form.text_area(:comment)
+  .actions
+    = form.submit
