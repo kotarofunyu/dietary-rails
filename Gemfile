@@ -31,7 +31,7 @@ gem 'devise'
 
 gem 'annotate'
 
-gem 'slim'
+gem 'slim-rails'
 gem 'html2slim'
 gem "view_component", require: "view_component/engine"
 
