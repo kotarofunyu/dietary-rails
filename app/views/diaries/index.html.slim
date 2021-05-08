@@ -8,6 +8,7 @@ table
       th[colspan="3"]
   tbody
     - @diaries.each do |diary|
+      = render DiaryComponent.new(diary: diary)
       tr
         td
           = link_to 'Show', diary
