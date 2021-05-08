@@ -1,11 +1,11 @@
 class DiaryForm
   include ActiveModel::Model
-  attr_accessor :date, :weight, :comment, :diary, :waist, :user
+  attr_accessor :date, :weight, :comment, :waist, :user
 
   validates :date, presence: true
   validates :weight, presence: true
   validates :comment, presence: true
-  # validates :user, presence: true
+  validates :user, presence: true
 
   def initialize(attributes = nil, diary: Diary.new)
   # def initialize(params: {})
@@ -20,7 +20,8 @@ class DiaryForm
     return false if invalid?
     # binding.pry
     # Diary.create(date: date, weight: weight, comment: comment)
-    @diary.save
+    @diary.update(date: date, weight: weight, waist: waist, comment: comment, user: user)
+    # @diary.save
     true
   end
 
