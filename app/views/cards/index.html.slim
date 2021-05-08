@@ -9,6 +9,7 @@ table
 
   tbody
     - @cards.each do |card|
+      = render CardComponent.new(card: card)
       tr
         td = link_to 'Show', card
         td = link_to 'Edit', edit_card_path(card)
