@@ -24,9 +24,9 @@ class DiariesController < ApplicationController
   # POST /diaries or /diaries.json
   def create
     # @diary = DiaryForm.new(params: diary_params)
-    @diary = DiaryForm.new(diary_params)
+    @diary_form = DiaryForm.new(diary_params)
 
-    if @diary.save
+    if @diary_form.save
       redirect_to diaries_path
     else
       render :new
