@@ -1,5 +1,5 @@
-- url = request.url.include?('edit') ? diary_path(diary) : diaries_path
-- method = request.url.include?('edit') ? :patch : :post
+- url = request.url.include?('edit') ? diary_path(diary) : diaries_path # ToDo: refactor me
+- method = request.url.include?('edit') ? :patch : :post # ToDo: refactor me
 = form_with(model: diary_form, url: url, local: true, method: method) do |form|
   - if diary&.errors&.any?
     #error_explanation
