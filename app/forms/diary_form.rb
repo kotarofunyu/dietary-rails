@@ -19,7 +19,13 @@ class DiaryForm
   def save
     return false if invalid?
 
-    @diary.update(date: date, weight: weight, waist: waist, comment: comment, user: user)
+    @diary.update(
+      date: date,
+      weight: weight,
+      waist: waist,
+      comment: comment,
+      user: user,
+      card_ids: [1])
     true
   end
 
