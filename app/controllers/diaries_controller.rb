@@ -35,14 +35,21 @@ class DiariesController < ApplicationController
 
   # PATCH/PUT /diaries/1 or /diaries/1.json
   def update
-    respond_to do |format|
-      if @diary.update(diary_params)
-        format.html { redirect_to @diary, notice: "Diary was successfully updated." }
-        format.json { render :show, status: :ok, location: @diary }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @diary.errors, status: :unprocessable_entity }
-      end
+    # respond_to do |format|
+    #   if @diary.update(diary_params)
+    #     format.html { redirect_to @diary, notice: "Diary was successfully updated." }
+    #     format.json { render :show, status: :ok, location: @diary }
+    #   else
+    #     format.html { render :edit, status: :unprocessable_entity }
+    #     format.json { render json: @diary.errors, status: :unprocessable_entity }
+    #   end
+    # end
+    @diary_form = DiaryForm.new(diary_params, diary: @diary)
+
+    if @diary_form.save
+      redirect_to diaries_path
+    else
+      render :edit
     end
   end
 

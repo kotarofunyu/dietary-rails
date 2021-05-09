@@ -1,4 +1,5 @@
-= form_with(model: @diary_form, url: diaries_path,local: true) do |form|
+- url = request.url.include?('edit') ? diary_path(@diary) : diaries_path
+= form_with(model: @diary_form, url: url,local: true) do |form|
   - if @diary_form.errors.any?
     #error_explanation
       h2

@@ -1,6 +1,7 @@
 class DiaryForm
   include ActiveModel::Model
   attr_accessor :date, :weight, :comment, :waist, :user
+  # attr_reader :diary
 
   validates :date, presence: true
   validates :weight, presence: true
