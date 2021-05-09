@@ -1,6 +1,6 @@
 - url = request.url.include?('edit') ? diary_path(diary) : diaries_path
-/ - binding.pry
-= form_with(model: diary_form, url: url,local: true) do |form|
+- method = request.url.include?('edit') ? :patch : :post
+= form_with(model: diary_form, url: url, local: true, method: method) do |form|
   - if diary&.errors&.any?
     #error_explanation
       h2
