@@ -1,12 +1,13 @@
-- url = request.url.include?('edit') ? diary_path(@diary) : diaries_path
-= form_with(model: @diary_form, url: url,local: true) do |form|
-  - if @diary_form.errors.any?
+- url = request.url.include?('edit') ? diary_path(diary) : diaries_path
+/ - binding.pry
+= form_with(model: diary_form, url: url,local: true) do |form|
+  - if diary&.errors&.any?
     #error_explanation
       h2
-        = pluralize(@diary_form.errors.count, "error")
+        = pluralize(diary.errors.count, "error")
         |  prohibited this diary from being saved:
       ul
-        - @diary_form.errors.each do |error|
+        - diary.errors.each do |error|
           li
             = error.full_message
   .date
