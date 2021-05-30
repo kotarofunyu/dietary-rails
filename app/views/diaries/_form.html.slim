@@ -10,28 +10,24 @@
         - diary_form.errors.each do |error|
           li
             = error.full_message
-  .ui.one.column.grid
-    .row
-      .date.column
-        = form.label :date
-        = form.date_field(:date)
-    .row
-      .weight.ui.right.labeled.input.column
+  .ui
+    .date.field
+      = form.label :date
+      = form.date_field(:date)
+    .two.fields
+      .weight.ui.right.labeled.input.field
         = form.label :weight
         = form.number_field(:weight, step: 0.1)
         .ui.basic.label kg
-      .waist.ui.right.labeled.input.column
+      .waist.ui.right.labeled.input.column.field
         = form.label :waist
         = form.number_field(:waist, step: 0.1)
         ui.basic.label cm
-    .row
-      .cards.ui.right.labeled.left.icon.input.column
-        / = form.collection_select :card_ids, Card.all, :id, :name, {:prompt => ""}, { multiple: true, class: 'js-searchable' }
-        = form.collection_select :card_ids, Card.all, :id, :name, {:prompt => "カードを選択"}, { multiple: true, class: 'ui fluid dropdown' }
-        / a.ui.tag.label カードを追加
-    .row
-      .comment.ui.form.column
-        = form.label :comment
-        = form.text_area(:comment)
-    .actions
+    .cards.ui.right.labeled.left.icon.input.field
+      = form.label :card_ids
+      = form.collection_select :card_ids, Card.all, :id, :name, {:prompt => "カードを選択"}, { multiple: true, class: 'ui fluid dropdown' }
+    .comment.ui.form.field
+      = form.label :comment
+      = form.text_area(:comment)
+    .actions.field
       = form.submit :submit, class: 'ui button'
