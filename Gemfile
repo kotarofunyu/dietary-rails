@@ -37,6 +37,7 @@ gem "view_component", require: "view_component/engine"
 
 gem 'select2-rails'
 gem 'semantic-ui-sass'
+gem 'font-awesome-sass'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
