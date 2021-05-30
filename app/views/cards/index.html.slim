@@ -1,20 +1,20 @@
 h1 Listing cards
 
-table
-  thead
-    tr
-      th
-      th
-      th
-
-  tbody
+.card-wrap
+  .ui.items
     - @cards.each do |card|
-      = render CardComponent.new(card: card)
-      tr
-        td = link_to 'Show', card
-        td = link_to 'Edit', edit_card_path(card)
-        td = link_to 'Destroy', card, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
+      .item
+        .content
+          .header
+            = card.name
+          .meta
+            span Description
+          .extra
+            .date
+              = card.created_at
+          .controls.ui.buttons.mini
+            = link_to 'Show', card, class: 'ui button'
+            = link_to 'Edit', edit_card_path(card), class: 'ui button'
+            = link_to 'Destroy', card, data: { confirm: 'Are you sure?' }, method: :delete, class: 'ui button'
 
 = link_to 'New Card', new_card_path

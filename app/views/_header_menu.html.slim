@@ -1,0 +1,12 @@
+.menu
+  #js-sidebar.item
+    i.icon.large.grey.content
+  .application-name
+    h1 Dietary
+  .ui.secondary.menu
+    = link_to '日記', diaries_path, class: 'item'
+    = link_to 'カード', cards_path, class: 'item'
+    - if user_signed_in?
+      = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'item'
+    - else
+      = link_to 'ログイン', new_user_session_path, class: 'item'
