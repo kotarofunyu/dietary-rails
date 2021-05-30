@@ -20,7 +20,7 @@
     = form.label :waist
     = form.number_field(:waist, step: 0.1)
   .cards
-    = form.collection_select :card_ids, Card.where(user: current_user), :id, :name, include_blank: true, multiple: true
+    = form.collection_select :card_ids, Card.all, :id, :name, {:prompt => ""}, { multiple: true }
   .comment
     = form.label :comment
     = form.text_area(:comment)
