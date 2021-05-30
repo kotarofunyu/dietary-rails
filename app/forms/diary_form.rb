@@ -3,6 +3,7 @@ class DiaryForm
   include ActiveModel::Attributes
 
   attribute :date, :date
+  attribute :card_ids, :card
   attr_accessor :weight, :comment, :waist, :user
 
   validates :date, presence: true
@@ -25,7 +26,8 @@ class DiaryForm
       waist: waist,
       comment: comment,
       user: user,
-      card_ids: [1])
+      card_ids: card_ids
+    )
     true
   end
 
