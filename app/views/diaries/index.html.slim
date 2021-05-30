@@ -3,14 +3,14 @@ p#notice
 h1
   |
   = t('activerecord.models.diary')
-table
+table.ui.definition.fixed.table
   tr
     th = t('activerecord.attributes.diary.date')
     th = t('activerecord.attributes.diary.weight')
     th = t('activerecord.attributes.diary.waist')
     th = t('activerecord.attributes.card.name')
     th = t('activerecord.attributes.diary.comment')
-    td action
+    th 操作
   - @diaries.each do |d|
     tr
       td=d.date
@@ -18,12 +18,12 @@ table
       td=d.waist
       td
         - d.cards.each do |card|
-          = card.name
-          br
+          div.ui.label
+            = card.name
       td=d.comment
       td
-        = link_to 'Show', d
-        = link_to 'Edit', edit_diary_path(d)
-        = link_to 'Destroy', d, method: :delete, data: { confirm: 'Are you sure?' }
+        = link_to 'Show', d, class: 'ui button'
+        = link_to 'Edit', edit_diary_path(d), class: 'ui button'
+        = link_to 'Destroy', d, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button'
 br
 = link_to '日記を作る', new_diary_path
