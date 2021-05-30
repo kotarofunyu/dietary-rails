@@ -26,9 +26,9 @@
         ui.basic.label cm
     .row
       .cards.ui.right.labeled.left.icon.input.column
-        = form.collection_select :card_ids, Card.all, :id, :name, {:prompt => ""}, { multiple: true, class: 'js-searchable' }
-        / = form.collection_select :card_ids, Card.all, :id, :name, {:prompt => ""}, { multiple: true, class: 'ui fluid dropdown' }
-        a.ui.tag.label カードを追加
+        / = form.collection_select :card_ids, Card.all, :id, :name, {:prompt => ""}, { multiple: true, class: 'js-searchable' }
+        = form.collection_select :card_ids, Card.all, :id, :name, {:prompt => "カードを選択"}, { multiple: true, class: 'ui fluid dropdown' }
+        / a.ui.tag.label カードを追加
     .row
       .comment.ui.form.column
         = form.label :comment
