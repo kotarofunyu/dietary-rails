@@ -1,11 +1,13 @@
-= form_with(model: diary) do |form|
-  - if diary.errors.any?
+- url = request.url.include?('edit') ? diary_path(diary) : diaries_path # ToDo: refactor me
+- method = request.url.include?('edit') ? :patch : :post # ToDo: refactor me
+= form_with(model: diary_form, url: url, local: true, method: method) do |form|
+  - if diary_form&.errors&.any?
     #error_explanation
       h2
-        = pluralize(diary.errors.count, "error")
+        = pluralize(diary_form.errors.count, "error")
         |  prohibited this diary from being saved:
       ul
-        - diary.errors.each do |error|
+        - diary_form.errors.each do |error|
           li
             = error.full_message
   .date
@@ -17,6 +19,8 @@
   .waist
     = form.label :waist
     = form.number_field(:waist, step: 0.1)
+  .cards
+    = form.collection_select :card_ids, Card.all, :id, :name, {:prompt => ""}, { multiple: true, class: 'js-searchable' }
   .comment
     = form.label :comment
     = form.text_area(:comment)

@@ -9,12 +9,5 @@ table
   tbody
     - @diaries.each do |diary|
       = render DiaryComponent.new(diary: diary)
-      tr
-        td
-          = link_to 'Show', diary
-        td
-          = link_to 'Edit', edit_diary_path(diary)
-        td
-          = link_to 'Destroy', diary, method: :delete, data: { confirm: 'Are you sure?' }
 br
 = link_to 'New Diary', new_diary_path

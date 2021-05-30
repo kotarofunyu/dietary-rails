@@ -1,5 +1,13 @@
 .diary-wrap
-  .date = @diary.date
-  .weight = @diary.weight
-  .waist = @diary.waist
-  .comment = @diary.comment
+  .diary-data
+    .date = @diary.date
+    .weight = @diary.weight
+    .waist = @diary.waist
+    .comment = @diary.comment
+    .cards
+      - @diary.cards.each do |card|
+        .card-item = card.name
+  .diary-handles
+    = link_to 'Show', @diary
+    = link_to 'Edit', edit_diary_path(@diary)
+    = link_to 'Destroy', @diary, method: :delete, data: { confirm: 'Are you sure?' }

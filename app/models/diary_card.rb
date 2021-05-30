@@ -19,6 +19,6 @@
 #  fk_rails_...  (diary_id => diaries.id)
 #
 class DiaryCard < ApplicationRecord
-  belongs_to :diary_id
-  belongs_to :card_id
+  belongs_to :diary
+  belongs_to :card
 end

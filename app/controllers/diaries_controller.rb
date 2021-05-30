@@ -12,38 +12,35 @@ class DiariesController < ApplicationController
 
   # GET /diaries/new
   def new
-    @diary = Diary.new
+    # @diary = Diary.new
+    @diary_form = DiaryForm.new
   end
 
   # GET /diaries/1/edit
   def edit
+    @diary_form = DiaryForm.new(diary: @diary)
   end
 
   # POST /diaries or /diaries.json
   def create
-    @diary = Diary.new(diary_params)
+    binding.pry
+    @diary_form = DiaryForm.new(diary_params)
 
-    respond_to do |format|
-      if @diary.save
-        format.html { redirect_to @diary, notice: "Diary was successfully created." }
-        format.json { render :show, status: :created, location: @diary }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @diary.errors, status: :unprocessable_entity }
-      end
+    if @diary_form.save
+      redirect_to diaries_path, notice: "Diary was successfully created."
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /diaries/1 or /diaries/1.json
   def update
-    respond_to do |format|
-      if @diary.update(diary_params)
-        format.html { redirect_to @diary, notice: "Diary was successfully updated." }
-        format.json { render :show, status: :ok, location: @diary }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @diary.errors, status: :unprocessable_entity }
-      end
+    @diary_form = DiaryForm.new(diary_params, diary: @diary)
+
+    if @diary_form.save
+      redirect_to diaries_path, notice: "Diary was successfully updated."
+    else
+      render :edit
     end
   end
 
@@ -64,6 +61,6 @@ class DiariesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def diary_params
-      params.fetch(:diary, {}).permit(:date, :weight, :waist, :comment).merge(user: current_user)
+      params.fetch(:diary_form, {}).permit(:date, :weight, :waist, :comment, card_ids: []).merge(user: current_user)
     end
 end
