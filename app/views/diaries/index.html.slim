@@ -1,13 +1,29 @@
 p#notice
   = notice
 h1
-  | Diaries
+  |
+  = t('activerecord.models.diary')
 table
-  thead
+  tr
+    th = t('activerecord.attributes.diary.date')
+    th = t('activerecord.attributes.diary.weight')
+    th = t('activerecord.attributes.diary.waist')
+    th = t('activerecord.attributes.card.name')
+    th = t('activerecord.attributes.diary.comment')
+    td action
+  - @diaries.each do |d|
     tr
-      th[colspan="3"]
-  tbody
-    - @diaries.each do |diary|
-      = render DiaryComponent.new(diary: diary)
+      td=d.date
+      td=d.weight
+      td=d.waist
+      td
+        - d.cards.each do |card|
+          = card.name
+          br
+      td=d.comment
+      td
+        = link_to 'Show', d
+        = link_to 'Edit', edit_diary_path(d)
+        = link_to 'Destroy', d, method: :delete, data: { confirm: 'Are you sure?' }
 br
-= link_to 'New Diary', new_diary_path
+= link_to '日記を作る', new_diary_path

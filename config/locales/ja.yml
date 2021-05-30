@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    models:
+      diary: 日記
+      card: カード
+    attributes:
+      diary:
+        date: 記録日
+        weight: 体重
+        waist: ウエスト
+        comment: コメント
+      card:
+        name: カード

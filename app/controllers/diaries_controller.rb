@@ -3,7 +3,7 @@ class DiariesController < ApplicationController
 
   # GET /diaries or /diaries.json
   def index
-    @diaries = Diary.all
+    @diaries = Diary.all.order(date: :asc)
   end
 
   # GET /diaries/1 or /diaries/1.json
