@@ -7,6 +7,17 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import $ from 'jquery'
+import 'select2'
+import 'select2/dist/css/select2.css'
+
+document.addEventListener('turbolinks:load', () => {
+  $('.js-searchable').select2({
+    placeholder: 'カードを選択',
+    width: 'auto'
+  })
+})
+
 
 Rails.start()
 Turbolinks.start()

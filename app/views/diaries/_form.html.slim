@@ -20,7 +20,7 @@
     = form.label :waist
     = form.number_field(:waist, step: 0.1)
   .cards
-    = form.collection_select :card_ids, Card.all, :id, :name, {:prompt => ""}, { multiple: true }
+    = form.collection_select :card_ids, Card.all, :id, :name, {:prompt => ""}, { multiple: true, class: 'js-searchable' }
   .comment
     = form.label :comment
     = form.text_area(:comment)
