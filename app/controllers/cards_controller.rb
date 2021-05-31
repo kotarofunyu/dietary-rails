@@ -64,6 +64,6 @@ class CardsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def card_params
-      params.fetch(:card, {}).permit(:name).merge(user: current_user)
+      params.fetch(:card, {}).permit(:name, :description).merge(user: current_user)
     end
 end
