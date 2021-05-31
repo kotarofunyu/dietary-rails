@@ -5,8 +5,13 @@
       ul
         - @card.errors.full_messages.each do |message|
           li = message
-  .name
-    = f.text_field(:name)
-    = f.text_area(:description)
+  .ui
+    .name.ui.labeled.input.field
+      = f.label :name
+      = f.text_field(:name)
+    .name.ui.form.field
+      = f.label :description
+      = f.text_area(:description)
 
-  .actions = f.submit
+  .actions
+    = f.submit class: 'ui button green'
