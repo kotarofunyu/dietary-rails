@@ -1,20 +1,18 @@
 h1 Listing cards
 
 .card-wrap
-  .ui.items
+  .ui.cards
     - @cards.each do |card|
-      .item
+      .card
         .content
           .header
             = card.name
           .meta
-            span Description
-          .extra
-            .date
-              = card.created_at
+            span
+              = l(card.created_at, format: :default)
+          p= card.description
           .controls.ui.buttons.mini
-            = link_to 'Show', card, class: 'ui button'
             = link_to 'Edit', edit_card_path(card), class: 'ui button'
-            = link_to 'Destroy', card, data: { confirm: 'Are you sure?' }, method: :delete, class: 'ui button'
+            = link_to 'Destroy', card, data: { confirm: 'Are you sure?' }, method: :delete, class: 'ui button red'
 
 = link_to 'New Card', new_card_path
