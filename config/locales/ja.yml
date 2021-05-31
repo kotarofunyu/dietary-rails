@@ -1,4 +1,9 @@
 ja:
+  time:
+    formats:
+      default: ! '%Y/%m/%d'
+      long: ! '%Y年%m月%d日(%a)'
+      short: ! '%m/%d'
   activerecord:
     models:
       diary: 日記
@@ -11,6 +16,7 @@ ja:
         comment: コメント
       card:
         name: カード
+        description: 説明
   devise:
     sessions:
       user:
