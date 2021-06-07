@@ -1,0 +1,16 @@
+= form_for @plan do |f|
+  - if @plan.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@plan.errors.count, "error")} prohibited this plan from being saved:"
+      ul
+        - @plan.errors.full_messages.each do |message|
+          li = message
+  .ui
+    .name.ui.labeled.input.field
+      = f.label :title
+      = f.text_field(:title)
+    .name.ui.form.field
+      = f.label :description
+      = f.text_area(:description)
+  .actions
+    = f.submit class: 'ui button green'
