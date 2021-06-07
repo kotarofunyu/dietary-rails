@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_31_131453) do
+ActiveRecord::Schema.define(version: 2021_06_07_125451) do
 
   create_table "cards", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
@@ -42,6 +42,22 @@ ActiveRecord::Schema.define(version: 2021_05_31_131453) do
     t.index ["diary_id"], name: "index_diary_cards_on_diary_id"
   end
 
+  create_table "diary_plans", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "diaries_id", null: false
+    t.bigint "plans_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["diaries_id"], name: "index_diary_plans_on_diaries_id"
+    t.index ["plans_id"], name: "index_diary_plans_on_plans_id"
+  end
+
+  create_table "plans", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "description", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -55,4 +71,6 @@ ActiveRecord::Schema.define(version: 2021_05_31_131453) do
   add_foreign_key "diaries", "users"
   add_foreign_key "diary_cards", "cards"
   add_foreign_key "diary_cards", "diaries"
+  add_foreign_key "diary_plans", "diaries", column: "diaries_id"
+  add_foreign_key "diary_plans", "plans", column: "plans_id"
 end
