@@ -64,6 +64,6 @@ class PlansController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def plan_params
-      params.fetch(:plan, {})
+      params.fetch(:plan, {}).permit(:title, :description)
     end
 end

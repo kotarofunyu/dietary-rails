@@ -9,6 +9,8 @@ table
 
   tbody
     - @plans.each do |plan|
+      = plan.title
+      = plan.description
       tr
         td = link_to 'Show', plan
         td = link_to 'Edit', edit_plan_path(plan)
