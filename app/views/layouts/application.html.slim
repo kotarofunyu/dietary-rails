@@ -16,16 +16,17 @@ html
       = render '/header_menu'
     .pusher
       - if flash.present?
-        .flashes.ui.grid.two.column.centered
-          - if flash.notice.present?
-            .ui.green.floating.message.column
-              i.close.icon
-              i.bell.icon
-              = notice
-          - if flash.alert.present?
-            .ui.red.floating.message.column
-              i.close.icon
-              i.exclamation.circle.icon
-              = alert
+        .flashes
+          .ui.grid.two.column.centered
+            - if flash.notice.present?
+              .ui.green.floating.message.column
+                i.close.icon
+                i.bell.icon
+                = notice
+            - if flash.alert.present?
+              .ui.red.floating.message.column
+                i.close.icon
+                i.exclamation.circle.icon
+                = alert
       .ui.container
         = yield
